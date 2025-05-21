@@ -36,5 +36,5 @@ def rotate_pdf(input_pdf, output_pdf):
 
 # Example usage
 input_pdf = 'C:/Users/someuser/Downloads/DevOps+Project.pdf'
-output_pdf = 'C:/Temp/pdf/DevOps+Project.pdf'
+output_pdf = 'C:/temp/pdf/DevOps+Project.pdf'
 rotate_pdf(input_pdf, output_pdf)
