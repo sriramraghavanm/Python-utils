@@ -1,0 +1,270 @@
+{
+  "metadata": {
+    "configurationVersions": [
+      7
+    ],
+    "clusterVersion": "1.316.27.20250606-023201"
+  },
+  "id": "5675a58ac-1176-4b5c-84c3-82dcae891522",
+  "dashboardMetadata": {
+    "name": "K8s Workloads Resource Usage",
+    "shared": false,
+    "owner": "firstname.lastname@somecompany.com",
+    "popularity": 1,
+    "dynamicFilters": {
+      "filters": [
+        "KUBERNETES_CLUSTER",
+        "RELATED_NAMESPACE"
+      ],
+      "genericTagFilters": []
+    },
+    "hasConsistentColors": false
+  },
+  "tiles": [
+    {
+      "name": "Usage Metrics",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 0,
+        "width": 912,
+        "height": 874
+      },
+      "tileFilter": {},
+      "isAutoRefreshDisabled": false,
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "k8s.cluster.name",
+            "k8s.namespace.name",
+            "k8s.workload.name"
+          ],
+          "metricSelector": "builtin:kubernetes.workload.cpu_usage:splitBy(\"k8s.cluster.name\",\"k8s.namespace.name\",\"k8s.workload.name\"):max:sort(value(max,descending))",
+          "rate": "NONE",
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "k8s.cluster.name",
+            "k8s.namespace.name",
+            "k8s.workload.name"
+          ],
+          "metricSelector": "builtin:kubernetes.workload.cpu_throttled:splitBy(\"k8s.cluster.name\",\"k8s.namespace.name\",\"k8s.workload.name\"):max:sort(value(max,descending))",
+          "rate": "NONE",
+          "enabled": true
+        },
+        {
+          "id": "C",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "k8s.cluster.name",
+            "k8s.namespace.name",
+            "k8s.workload.name"
+          ],
+          "metricSelector": "builtin:kubernetes.workload.requests_cpu:splitBy(\"k8s.cluster.name\",\"k8s.namespace.name\",\"k8s.workload.name\"):max:sort(value(max,descending))",
+          "rate": "NONE",
+          "enabled": true
+        },
+        {
+          "id": "D",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "k8s.cluster.name",
+            "k8s.namespace.name",
+            "k8s.workload.name"
+          ],
+          "metricSelector": "builtin:kubernetes.workload.limits_cpu:splitBy(\"k8s.cluster.name\",\"k8s.namespace.name\",\"k8s.workload.name\"):max:sort(value(max,descending))",
+          "rate": "NONE",
+          "enabled": true
+        },
+        {
+          "id": "E",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "k8s.cluster.name",
+            "k8s.namespace.name",
+            "k8s.workload.name"
+          ],
+          "metricSelector": "builtin:kubernetes.workload.requests_memory:splitBy(\"k8s.cluster.name\",\"k8s.namespace.name\",\"k8s.workload.name\"):max:sort(value(max,descending))",
+          "rate": "NONE",
+          "enabled": true
+        },
+        {
+          "id": "F",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "k8s.cluster.name",
+            "k8s.namespace.name",
+            "k8s.workload.name"
+          ],
+          "metricSelector": "builtin:kubernetes.workload.limits_memory:splitBy(\"k8s.cluster.name\",\"k8s.namespace.name\",\"k8s.workload.name\"):max:sort(value(max,descending))",
+          "rate": "NONE",
+          "enabled": true
+        },
+        {
+          "id": "H",
+          "spaceAggregation": "AUTO",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "k8s.cluster.name",
+            "k8s.namespace.name",
+            "k8s.workload.name"
+          ],
+          "metricSelector": "builtin:kubernetes.pods:splitBy(\"k8s.cluster.name\",\"k8s.namespace.name\",\"k8s.workload.name\")",
+          "rate": "NONE",
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "TABLE",
+        "global": {},
+        "rules": [
+          {
+            "matcher": "A:",
+            "unitTransform": "Cores",
+            "valueFormat": "0,000",
+            "properties": {
+              "color": "DEFAULT",
+              "seriesType": "LINE",
+              "alias": "CPU Usage"
+            },
+            "seriesOverrides": []
+          },
+          {
+            "matcher": "B:",
+            "unitTransform": "Cores",
+            "valueFormat": "0,000",
+            "properties": {
+              "color": "DEFAULT",
+              "seriesType": "LINE",
+              "alias": "CPU Throttling"
+            },
+            "seriesOverrides": []
+          },
+          {
+            "matcher": "C:",
+            "unitTransform": "Cores",
+            "valueFormat": "0,000",
+            "properties": {
+              "color": "DEFAULT",
+              "seriesType": "LINE",
+              "alias": "CPU Requests"
+            },
+            "seriesOverrides": []
+          },
+          {
+            "matcher": "D:",
+            "unitTransform": "Cores",
+            "valueFormat": "0,000",
+            "properties": {
+              "color": "DEFAULT",
+              "seriesType": "LINE",
+              "alias": "CPU Limits"
+            },
+            "seriesOverrides": []
+          },
+          {
+            "matcher": "E:",
+            "unitTransform": "GibiByte",
+            "valueFormat": "0,00",
+            "properties": {
+              "color": "DEFAULT",
+              "seriesType": "LINE",
+              "alias": "Memory Requests"
+            },
+            "seriesOverrides": []
+          },
+          {
+            "matcher": "F:",
+            "unitTransform": "GibiByte",
+            "valueFormat": "0,00",
+            "properties": {
+              "color": "DEFAULT",
+              "seriesType": "LINE",
+              "alias": "Memory Limits"
+            },
+            "seriesOverrides": []
+          },
+          {
+            "matcher": "H:",
+            "unitTransform": "auto",
+            "valueFormat": "auto",
+            "properties": {
+              "color": "DEFAULT",
+              "seriesType": "LINE"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE",
+          "showLabels": false
+        },
+        "singleValueSettings": {
+          "showTrend": true,
+          "showSparkLine": true,
+          "linkTileColorToThreshold": true
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "columnId": "Kubernetes: Container - CPU usage (by workload)",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ],
+            "queryId": "A",
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "hiddenColumns": [
+            "A:k8s.cluster.name",
+            "A:k8s.namespace.name"
+          ]
+        },
+        "graphChartSettings": {
+          "connectNulls": true
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": false
+        }
+      },
+      "queriesSettings": {
+        "resolution": "",
+        "foldTransformation": "TOTAL",
+        "foldAggregation": "MAX"
+      },
+      "metricExpressions": [
+        "resolution=null&(builtin:kubernetes.workload.cpu_usage:splitBy(\"k8s.cluster.name\",\"k8s.namespace.name\",\"k8s.workload.name\"):max:sort(value(max,descending))):names:fold(max),(builtin:kubernetes.workload.cpu_throttled:splitBy(\"k8s.cluster.name\",\"k8s.namespace.name\",\"k8s.workload.name\"):max:sort(value(max,descending))):names:fold(max),(builtin:kubernetes.workload.requests_cpu:splitBy(\"k8s.cluster.name\",\"k8s.namespace.name\",\"k8s.workload.name\"):max:sort(value(max,descending))):names:fold(max),(builtin:kubernetes.workload.limits_cpu:splitBy(\"k8s.cluster.name\",\"k8s.namespace.name\",\"k8s.workload.name\"):max:sort(value(max,descending))):names:fold(max),(builtin:kubernetes.workload.requests_memory:splitBy(\"k8s.cluster.name\",\"k8s.namespace.name\",\"k8s.workload.name\"):max:sort(value(max,descending))):names:fold(max),(builtin:kubernetes.workload.limits_memory:splitBy(\"k8s.cluster.name\",\"k8s.namespace.name\",\"k8s.workload.name\"):max:sort(value(max,descending))):names:fold(max),(builtin:kubernetes.pods:splitBy(\"k8s.cluster.name\",\"k8s.namespace.name\",\"k8s.workload.name\")):names:fold(max)"
+      ]
+    }
+  ]
+}
